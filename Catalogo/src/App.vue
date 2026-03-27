@@ -8,5 +8,3 @@ router.push("/")
 <template>
   <RouterView />
 </template>
-
-<style scoped></style>
