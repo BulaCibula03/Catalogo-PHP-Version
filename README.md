@@ -14,7 +14,7 @@ Questa documentazione spiega, passo‑passo, come far partire il progetto sul pr
 | **PHP** | ≥ 8.0 | Esegue l’API |
 | **MySQL** (o MariaDB) | – | Database `catalog` |
 | **phpMyAdmin** (o altro client MySQL) | – | Creazione e importazione del database |
-| **Git** (opzionale) | – | Solo se vuoi versionare il codice |
+| **Git** (opzionale) | – | Solo se si vuole versionare il codice |
 
 Assicurarsi che Apache, PHP e MySQL siano avviati.
 
