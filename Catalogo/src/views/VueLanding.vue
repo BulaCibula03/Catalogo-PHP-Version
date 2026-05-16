@@ -3,11 +3,17 @@ import { onMounted, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/useAuthStore'
 import { useCatalogStore } from '@/stores/useCatalogStore'
+//import { gsap } from 'gsap'
+const router = useRouter()
 const user = useAuthStore()
 const catalogo = useCatalogStore()
 onMounted(async()=>{
+  user.loadToken()
   await catalogo.fetchAll()
-  if(user.isAuthenticated) user.logout()
+  if(user.isAuthenticated){
+    user.fetchProfile()
+    router.push('/dashboard')
+  }
 })
 interface Movie {
   id: number
@@ -70,6 +76,8 @@ const scrollToFeatures = () => {
   const element = document.getElementById('features')
   element?.scrollIntoView({ behavior: 'smooth' })
 }
+
+//gsap.registerPlugin(MotionPathPlugin)
 </script>
 
 <template>
@@ -95,7 +103,7 @@ const scrollToFeatures = () => {
       </nav>
     </header>
 
-    <section class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="path" class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-slate-900 to-slate-900"></div>
       <div class="absolute inset-0">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full filter blur-3xl animate-pulse"></div>
