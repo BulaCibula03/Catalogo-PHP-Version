@@ -84,15 +84,15 @@ function buildBasePayload() {
 
 /* ---------- Upload foto (solo percorso) ---------- */
 const fileInput = ref<HTMLInputElement | null>(null)
-const selectedFile = ref<File | null>(null)
+const selectedFile = ref<File|null>(null)
 
 function onFileSelected(event: Event) {
   const target = event.target as HTMLInputElement
   if (!target.files?.length) return
 
-  selectedFile.value = target.files[0]
+  selectedFile.value = target.files[0] || null
 
-  const previewUrl = URL.createObjectURL(selectedFile.value)
+  const previewUrl = URL.createObjectURL(selectedFile.value || new Blob())
   if (user.value) {
     user.value.profile_image = previewUrl
   }

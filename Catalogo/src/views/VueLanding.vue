@@ -185,7 +185,7 @@ const scrollToFeatures = () => {
           <div v-for="movie in featuredMovies" :key="movie.id"
                class="group cursor-pointer">
             <div class="relative overflow-hidden rounded-xl mb-4 aspect-[2/3] bg-slate-800">
-              <img :src="movie.image"
+              <img :src="movie.image || undefined"
                    :alt="movie.title"
                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
